@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "123",
+    "tarefa": "Limpar Casa",
+    "responsavel": "Kauã",
+    "categoria": "limpeza"
+  },
+  {
+    "_id": "456",
+    "tarefa": "Fazer Comida",
+    "responsavel": "Artur",
+    "categoria": "cozinha"
+  },
+  {
+    "_id": "890",
+    "tarefa": "Lavar Roupa",
+    "responsavel": "Renato",
+    "categoria": "roupas"
+  },
+  { "_id": "abc", "tarefa": "", "responsavel": "", "categoria": "" }
+]

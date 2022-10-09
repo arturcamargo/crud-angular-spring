@@ -1,17 +1,20 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { ItensRoutingModule } from './itens-routing.module';
+import { AppMaterialModule } from './../shared/app-material/app-material.module';
+import { SharedModule } from './../shared/shared.module';
 import { ItemComponent } from './item/item.component';
+import { ItensRoutingModule } from './itens-routing.module';
 
 
 @NgModule({
-  declarations: [
-    ItemComponent
-  ],
+  declarations: [ItemComponent],
   imports: [
     CommonModule,
-    ItensRoutingModule
-  ]
+    ItensRoutingModule,
+    AppMaterialModule,
+    SharedModule,
+
+  ],
 })
-export class ItensModule { }
+export class ItensModule {}
