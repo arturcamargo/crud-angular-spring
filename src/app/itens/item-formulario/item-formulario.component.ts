@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ItensService } from './../services/itens.service';
@@ -11,10 +11,10 @@ import { ItensService } from './../services/itens.service';
   styleUrls: ['./item-formulario.component.scss'],
 })
 export class ItemFormularioComponent implements OnInit {
-  formulario: FormGroup;
+  formulario: UntypedFormGroup;
 
   constructor(
-    private construtorFormulario: FormBuilder,
+    private construtorFormulario: UntypedFormBuilder,
     private servicos: ItensService,
     private snackBar: MatSnackBar,
     private localizacao: Location,
