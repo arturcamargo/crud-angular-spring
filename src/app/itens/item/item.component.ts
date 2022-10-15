@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
@@ -14,9 +15,14 @@ import { ItensService } from './../services/itens.service';
 })
 export class ItemComponent implements OnInit {
   itens$: Observable<Item[]>;
-  displayedColumns: string[] = ['categoria','_id', 'tarefa', 'responsavel'];
+  displayedColumns: string[] = ['categoria','_id', 'tarefa', 'responsavel', 'acoes'];
 
-  constructor(private ItensService: ItensService, public dialog: MatDialog) {
+  constructor(
+    private ItensService: ItensService,
+    public dialog: MatDialog,
+    private roteador: Router,
+    private rota: ActivatedRoute
+     ) {
     this.itens$ = this.ItensService.listar()
     .pipe(
       catchError((errinho) => {
@@ -33,6 +39,11 @@ export class ItemComponent implements OnInit {
     this.dialog.open(ErrorDialogComponent, {
       data: mensagem,
     });
+  }
+
+  adicionar(){
+    this.roteador.navigate(['novo'], {relativeTo: this.rota})
+    console.log('adicionei')
   }
 
   ngOnInit(): void { /* TODO document why this method 'ngOnInit' is empty */  }

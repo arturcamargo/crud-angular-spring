@@ -8,7 +8,7 @@ import { delay, first, tap } from 'rxjs/operators';
 })
 export class ItensService {
   constructor(private clienteHTTP: HttpClient) {}
-  private readonly API = '/assets/itens.json';
+  private readonly API = 'api/itens';
   listar() {
     return this.clienteHTTP.get<Item[]>(this.API)
     .pipe(

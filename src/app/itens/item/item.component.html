@@ -2,37 +2,74 @@
   <mat-toolbar color="primary"> Lista de Tarefas </mat-toolbar>
   <div *ngIf="itens$ | async as itens; else carregando">
     <table mat-table [dataSource]="itens$" class="mat-elevation-z8">
-        <!-- Categoria Column -->
-        <ng-container matColumnDef="categoria">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let itens">
-            <mat-icon aria-hidden="false" aria-label="Categoria da Tarefa">{{itens.categoria | category}}</mat-icon>
-          </td>
-        </ng-container>
-        <!-- ID Column -->
-        <ng-container matColumnDef="_id">
-          <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let itens">{{ itens._id }}
-          </td>
-        </ng-container>
-        <!-- Tarefa Column -->
-        <ng-container matColumnDef="tarefa">
-          <th mat-header-cell *matHeaderCellDef>Tarefa</th>
-          <td mat-cell *matCellDef="let itens">{{ itens.tarefa }}</td>
-        </ng-container>
-        <!-- Responsável Column -->
-        <ng-container matColumnDef="responsavel">
-          <th mat-header-cell *matHeaderCellDef>Responsável</th>
-          <td mat-cell *matCellDef="let itens">{{ itens.responsavel }}</td>
-        </ng-container>
+      <!-- Categoria Column -->
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let itens">
+          <mat-icon aria-hidden="false" aria-label="Categoria da Tarefa">{{
+            itens.categoria | category
+          }}</mat-icon>
+        </td>
+      </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-    </div>
-    <ng-template #carregando>
-      <div id="barra-carregando">
-      <mat-toolbar color="secondary"> Carregando a Lista Cleirovândica </mat-toolbar>
+      <!-- ID Column -->
+      <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let itens">{{ itens._id }}</td>
+      </ng-container>
+
+      <!-- Tarefa Column -->
+      <ng-container matColumnDef="tarefa">
+        <th mat-header-cell *matHeaderCellDef>Tarefa</th>
+        <td mat-cell *matCellDef="let itens">{{ itens.tarefa }}</td>
+      </ng-container>
+
+      <!-- Responsável Column -->
+      <ng-container matColumnDef="responsavel">
+        <th mat-header-cell *matHeaderCellDef>Responsável</th>
+        <td mat-cell *matCellDef="let itens">{{ itens.responsavel }}</td>
+      </ng-container>
+
+      <!-- Acoes Column -->
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef="">
+          <button
+            mat-icon-button
+            color="accent"
+            aria-label="Adicionar item"
+          >
+            <mat-icon (click)="adicionar()">post_add</mat-icon>
+          </button>
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let item">
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Editar item"
+          >
+            <mat-icon>edit_note</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Remover item"
+          >
+            <mat-icon>delete_sweep</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <ng-template #carregando>
+    <div id="barra-carregando">
+      <mat-toolbar color="secondary">
+        Carregando a Lista Cleirovândica
+      </mat-toolbar>
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
   </ng-template>
