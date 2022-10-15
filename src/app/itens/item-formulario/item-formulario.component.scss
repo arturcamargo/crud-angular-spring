@@ -1,0 +1,21 @@
+mat-toolbar{
+  margin: 2em auto;
+}
+.mat-card {
+  max-width: 75%;
+  margin: 2em auto;
+  text-align: center;
+  align-items: center;
+}
+.full-width {
+  padding: 0;
+  width: 75%;
+  display: block;
+}
+.min-width {
+  width: 100%;
+  min-width: 150px;
+}
+mat-card-actions{
+  margin: 1em;
+}

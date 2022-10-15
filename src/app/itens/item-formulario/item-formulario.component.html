@@ -1,1 +1,46 @@
-<p>item-formulario works!</p>
+<mat-card>
+  <mat-toolbar color="primary"> Nova Tarefa </mat-toolbar>
+  <mat-card-content class="">
+    <form [formGroup]="formulario">
+      <!-- Responsavel -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Responsável</mat-label>
+        <input
+          matInput
+          #input
+          placeholder="escreva um nome"
+          formControlName="responsavel"
+        />
+      </mat-form-field>
+
+      <!-- Tarefa -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Tarefa</mat-label>
+        <input
+          matInput
+          #input
+          placeholder="escreva uma tarefa"
+          formControlName="tarefa"
+        />
+      </mat-form-field>
+
+      <!-- categoria -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="categoria">
+          <mat-option value="null"></mat-option>
+          <mat-option value="limpeza">limpeza</mat-option>
+          <mat-option value="cozinha">cozinha</mat-option>
+          <mat-option value="roupas">roupas</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="enviar()">
+          Adicionar
+        </button>
+        <button mat-button (click)="cancelar()">Cancelar</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

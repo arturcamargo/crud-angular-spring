@@ -23,9 +23,10 @@ export class ItemComponent implements OnInit {
     private roteador: Router,
     private rota: ActivatedRoute
      ) {
-    this.itens$ = this.ItensService.listar()
+    this.itens$ = this.ItensService
+    .listar()
     .pipe(
-      catchError((errinho) => {
+      catchError(() => {
         this.seAcontecerErro('Cleirovandis roubou o que ia ser exibido aqui kk')
         return of([]);
       })
