@@ -15,7 +15,6 @@ import { ItensService } from './../services/itens.service';
 })
 export class ItemComponent implements OnInit {
   itens$: Observable<Item[]>;
-  displayedColumns: string[] = ['categoria','_id', 'tarefa', 'responsavel', 'acoes'];
 
   constructor(
     private ItensService: ItensService,

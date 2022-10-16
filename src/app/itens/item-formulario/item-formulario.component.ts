@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { NonNullableFormBuilder, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ItensService } from './../services/itens.service';
@@ -11,40 +12,41 @@ import { ItensService } from './../services/itens.service';
   styleUrls: ['./item-formulario.component.scss'],
 })
 export class ItemFormularioComponent implements OnInit {
-  formulario: UntypedFormGroup;
+  formulario = this.construtorFormulario.group({
+    categoria: [''],
+    tarefa: [''],
+    responsavel: ['']
+  });
 
   constructor(
-    private construtorFormulario: UntypedFormBuilder,
+    private construtorFormulario: NonNullableFormBuilder,
     private servicos: ItensService,
     private snackBar: MatSnackBar,
-    private localizacao: Location,
-  ) {
-    this.formulario = this.construtorFormulario.group({
-      categoria: [null],
-      tarefa: [null],
-      responsavel: [null],
-    });
+    private localizacao: Location
+  ) {}
+
+  ngOnInit(): void {
   }
 
   enviar() {
     this.servicos.salvar(this.formulario.value)
     .subscribe(
-      sucesso => this.sucessoAoSalvar(),
-      erro => {
+      (sucesso) => this.sucessoAoSalvar(),
+      (erro) => {
         this.erroAoSalvar();
       }
     );
   }
 
   cancelar() {
-    this.localizacao.back()
+    this.localizacao.back();
   }
 
   private sucessoAoSalvar() {
     this.snackBar.open('Tá salvo', '', {
       duration: 1500,
     });
-    this.cancelar()
+    this.cancelar();
   }
 
   private erroAoSalvar() {
@@ -52,6 +54,4 @@ export class ItemFormularioComponent implements OnInit {
       duration: 1500,
     });
   }
-
-  ngOnInit(): void {}
 }

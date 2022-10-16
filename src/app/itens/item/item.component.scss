@@ -1,7 +1,14 @@
-table{
-  width: 100%;
-}
-#barra-carregando{
+.barra-carregando {
   background: rgba($color: #000000, $alpha: 0.05);
   padding: 50px;
+}
+mat-card {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+.column-flex{
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
 }

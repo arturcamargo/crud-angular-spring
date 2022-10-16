@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs/operators';
+import { first, tap, delay } from 'rxjs/operators';
 
 import { Item } from './../model/item';
 
@@ -14,15 +14,15 @@ export class ItensService {
   listar() {
     return this.clienteHTTP.get<Item[]>(this.API).pipe(
       first(),
-      // delay(2000),
+      delay(1500),
       tap((itens) => console.log(itens))
     );
   }
 
-  salvar(item: Item) {
-    console.log(item)
+  salvar(gravacao: Partial<Item>) {
+    console.log(gravacao)
     return this.clienteHTTP.post<Item>(
-      this.API, item)
+      this.API, gravacao)
       .pipe(first()
       );
   }
