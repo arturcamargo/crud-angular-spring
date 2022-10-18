@@ -1,8 +1,8 @@
-import { ItemFormularioComponent } from './item-formulario/item-formulario.component';
+import { ItemFormularioComponent } from './containers/item-formulario/item-formulario.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ItemComponent } from './item/item.component';
+import { ItemComponent } from './containers/item/item.component';
 
 const routes: Routes = [
   { path: '', component: ItemComponent },

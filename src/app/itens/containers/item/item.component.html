@@ -4,6 +4,7 @@
     <app-lista-de-itens
       *ngIf="itens$ | async as itens; else carregando"
       [itens$]="itens"
+      (adiciona)="adicionar()"
     ></app-lista-de-itens>
 
     <ng-template #carregando>

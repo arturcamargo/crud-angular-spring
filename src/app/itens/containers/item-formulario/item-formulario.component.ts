@@ -4,7 +4,7 @@ import { NonNullableFormBuilder, UntypedFormBuilder, UntypedFormGroup } from '@a
 import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { ItensService } from './../services/itens.service';
+import { ItensService } from '../../services/itens.service';
 
 @Component({
   selector: 'app-item-formulario',
